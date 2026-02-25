@@ -1,4 +1,4 @@
-package org.example.projectjavaalura.Service;
+package org.example.projectjavaalura.service;
 
 import org.example.projectjavaalura.model.Reserva;
 import org.example.projectjavaalura.model.Sala;

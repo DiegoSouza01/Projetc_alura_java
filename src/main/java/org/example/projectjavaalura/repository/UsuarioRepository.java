@@ -1,12 +1,9 @@
 package org.example.projectjavaalura.repository;
 
-import org.example.projectjavaalura.model.Reserva;
+import org.example.projectjavaalura.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface UsuarioRepository extends JpaRepository<Reserva, Long> {
-    List<Reserva> findBySalaId(Long salaId);
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 }
