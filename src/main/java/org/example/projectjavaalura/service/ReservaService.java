@@ -32,15 +32,12 @@ public class ReservaService {
         Usuario usuario = usuarioRepository.findById(usuarioId)
                 .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado."));
 
-        Reserva novaReserva = new Reserva(sala, usuario, inicio, fim);
-
-        List<Reserva> reservasDaSala = reservaRepository.findBySalaId(salaId);
-        for (Reserva existente : reservasDaSala) {
-            if (novaReserva.isConflitante(existente)) {
-                throw new IllegalStateException("Conflito de horário: a sala já está reservada neste período.");
-            }
+        List<Reserva> conflitos = reservaRepository.buscarConflitos(salaId, inicio, fim);
+        if (!conflitos.isEmpty()) {
+            throw new IllegalStateException("Conflito de horário: a sala já está reservada neste período.");
         }
 
+        Reserva novaReserva = new Reserva(sala, usuario, inicio, fim);
         return reservaRepository.save(novaReserva);
     }
 

@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:reservas_test_db
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
